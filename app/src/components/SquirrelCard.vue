@@ -1,24 +1,19 @@
 <template>
-<router-link :to="squirrelPath" class="card">
+  <router-link :to="squirrelPath" class="card">
     <h2>{{ squirrel.unique_squirrel_id }}</h2>
-    <h3>{{ primary_fur_color }}</h3>
   </router-link>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({
-    unique_squirrel_id: {
-        type: Object,
-        required: true,
-    },
-    primary_fur_color: {
-        type: Object,
-        required: true,
-    }
+  squirrel: {
+    type: Object,
+    required: true,
+  },
 })
 const squirrelPath = computed(() => {
-    return `/pkmn/${props.squirrel.unique_squirrel_id}`
+  return `/squirrel/${props.squirrel.unique_squirrel_id}`
 })
 </script>
 

@@ -1,25 +1,32 @@
 <template>
-    <div class="container">
-        <h1>NYC Squirrels</h1>
-    </div>
+  <div class="container">
+    <h1>NYC Squirrels</h1>
+    <SquirrelCard
+      v-for="squirrel in squirrels"
+      :key="squirrel.unique_squirrel_id"
+      :squirrel="squirrel"
+    />
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import SquirrelData from '@/components/SquirrelData.vue'
-const squirrel = ref([])
-async function getSquirrel() {
-    try {
-        const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json?$limit=5000')
-        const data = await response.json()
-        squirrel.value = data
-    } catch (error) {
-        console.log(error)
-    }
+import SquirrelCard from '@/components/SquirrelCard.vue'
+
+const squirrels = ref([])
+
+async function getSquirrels() {
+  try {
+    const response = await fetch(
+      'https://data.cityofnewyork.us/resource/vfnx-vebw.json?$limit=1000',
+    )
+    const data = await response.json()
+    squirrels.value = data
+  } catch (error) {
+    console.log(error)
+  }
 }
-onMounted(() => {
-    getSquirrel()
-})
+onMounted(getSquirrels)
 </script>
 
 <style scoped>

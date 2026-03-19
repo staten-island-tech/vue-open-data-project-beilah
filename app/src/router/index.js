@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Squirrel from '@/views/Squirrel.vue'
+import SquirrelDetail from '@/views/SquirrelDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    { path: '/', component: () => import('@/views/Squirrel.vue') },
     {
-      path: '/',
-      name: 'home',
-      component: Squirrel,
-    }
+      path: '/squirrel/:id',
+      name: 'squirrel',
+      component: SquirrelDetail,
+    },
   ],
 })
 
