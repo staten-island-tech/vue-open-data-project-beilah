@@ -2,9 +2,10 @@
   <div class="container">
     <h1>NYC Squirrels</h1>
     <SquirrelCard
-      v-for="squirrel in squirrels"
+      v-for="(squirrel, index) in squirrels"
       :key="squirrel.unique_squirrel_id"
       :squirrel="squirrel"
+      :index="index"
     />
   </div>
 </template>
@@ -32,11 +33,18 @@ onMounted(getSquirrels)
 <style scoped>
 .container {
   width: 80vw;
+  height: 80vw;
   margin: 30px auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+h1 {
+  font-size: 50px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  font-style: italic;
+  text-align: center;
 }
 </style>
