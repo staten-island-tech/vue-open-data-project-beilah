@@ -5,8 +5,9 @@
     <p>Date: {{ squirrel.date?.toString().replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3') }}</p>
     <p>Age: {{ squirrel.age || 'Unknown' }}</p>
     <p v-if="squirrel.geocoded_column">
-  Coordinates: {{ squirrel.geocoded_column.coordinates[1] }}, {{ squirrel.geocoded_column.coordinates[0] }}
-</p>
+      Coordinates: {{ squirrel.geocoded_column.coordinates[1] }},
+      {{ squirrel.geocoded_column.coordinates[0] }}
+    </p>
   </div>
   <div v-else>Loading...</div>
 </template>
@@ -21,7 +22,7 @@ const squirrel = ref(null)
 async function getSquirrel() {
   const id = route.params.id
   const response = await fetch(
-    `https://data.cityofnewyork.us/resource/vfnx-vebw.json?unique_squirrel_id=${encodeURIComponent(id)}`
+    `https://data.cityofnewyork.us/resource/vfnx-vebw.json?unique_squirrel_id=${encodeURIComponent(id)}`,
   )
   const data = await response.json()
   squirrel.value = data[0]

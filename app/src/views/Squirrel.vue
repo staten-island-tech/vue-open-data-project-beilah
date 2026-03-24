@@ -8,11 +8,35 @@
       :index="index"
     />
   </div>
+  <Bar
+    id="chart"
+    :options="chartOptions"
+    :data="chartData"
+  />
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import SquirrelCard from '@/components/SquirrelCard.vue'
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: [ 'January', 'February', 'March' ],
+        datasets: [ { data: [40, 20, 12] } ]
+      },
+      chartOptions: {
+        responsive: true
+      }
+    }
+  }
+}
+  
 
 const squirrels = ref([])
 
@@ -42,7 +66,8 @@ onMounted(getSquirrels)
 }
 h1 {
   font-size: 50px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   width: 100%;
   font-style: italic;
   text-align: center;

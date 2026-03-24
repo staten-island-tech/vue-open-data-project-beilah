@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="squirrelPath" class="card"> 
-      <h2>Squirrel #{{ index + 1 }}</h2>
+  <router-link :to="squirrelPath" class="card">
+    <h2>Squirrel #{{ index + 1 }}</h2>
   </router-link>
 </template>
 
@@ -14,7 +14,7 @@ const props = defineProps({
   index: {
     type: Number,
     required: true,
-  }
+  },
 })
 const squirrelPath = computed(() => {
   return `/squirrel/${props.squirrel.unique_squirrel_id}`
@@ -26,7 +26,7 @@ const squirrelPath = computed(() => {
   width: 20%;
   height: 15%;
   text-align: center;
-  background-color:rgb(122, 80, 90);
+  background-color: rgb(122, 80, 90);
   margin: 30px 0;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,8 @@ const squirrelPath = computed(() => {
 }
 h2 {
   margin: auto;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family:
+    'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(247, 244, 246);
   text-decoration: none;
   padding: 5px;
