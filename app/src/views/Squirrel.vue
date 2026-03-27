@@ -1,10 +1,10 @@
 <template>
-    <h1>NYC Squirrels</h1>
-    <div class="chart-wrapper">
-      <Radar id="radar" :options="chartOptions" :data="radarData" />
-      <Bar id="bar" :options="chartOptions" :data="barData" />
-    </div>
-    <div class="container">
+  <h1>NYC Squirrels</h1>
+  <div class="chart-wrapper">
+    <Radar id="radar" :options="chartOptions" :data="radarData" />
+    <Bar id="bar" :options="chartOptions" :data="barData" />
+  </div>
+  <div class="container">
     <SquirrelCard
       v-for="(squirrel, index) in squirrels"
       :key="squirrel.unique_squirrel_id"
